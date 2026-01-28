@@ -1,0 +1,42 @@
+export const data = [
+  {
+    question: "What is React JS?",
+    option1: "A JavaScript library",
+    option2: "A programming language",
+    option3: "A framework",
+    option4: "A database",
+    ans: 1,
+  },
+  {
+    question: "What is used to write HTML in React?",
+    option1: "JSX",
+    option2: "HTML5",
+    option3: "CSS",
+    option4: "JSON",
+    ans: 1,
+  },
+  {
+    question: "Which hook is used to add state in a function component?",
+    option1: "useEffect",
+    option2: "useState",
+    option3: "useRef",
+    option4: "useMemo",
+    ans: 2,
+  },
+  {
+    question: "Which command is used to start a React project?",
+    option1: "npm start",
+    option2: "npm stop",
+    option3: "npm build",
+    option4: "npm init",
+    ans: 1,
+  },
+  {
+    question: "Which tool is used to create a new React app?",
+    option1: "create-react-app",
+    option2: "react-start",
+    option3: "react-new",
+    option4: "npm-react",
+    ans: 1,
+  },
+];
