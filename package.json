@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+=======
+  "homepage": "https://ankitayadav476076.github.io/Quiz-App/",
+>>>>>>> 15c4625 (first commit)
   "name": "quiz-app",
   "private": true,
   "version": "0.0.0",
@@ -7,9 +11,18 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+<<<<<<< HEAD
     "preview": "vite preview"
   },
   "dependencies": {
+=======
+    "preview": "vite preview",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist"
+  },
+  "dependencies": {
+    "gh-pages": "^6.3.0",
+>>>>>>> 15c4625 (first commit)
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
