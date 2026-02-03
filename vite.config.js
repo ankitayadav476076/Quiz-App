@@ -1,12 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
-<<<<<<< HEAD
-=======
-  base:'/portfolio/',
-  base:"/Quiz-App",
->>>>>>> 15c4625 (first commit)
+  base: "/Quiz-App/", // Use this if you deploy on GitHub Pages under "Quiz-App" repo
   plugins: [react()],
-})
+});

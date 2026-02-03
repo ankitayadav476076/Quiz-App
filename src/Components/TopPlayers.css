@@ -1,0 +1,43 @@
+.top-container {
+  width: 400px;
+  max-width: 90%;
+  margin: 30px auto;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.top-container h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.player-card {
+  background: #f7f7f7;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.player-card h2 {
+  margin: 0 0 5px 0;
+}
+
+.top-container button {
+  padding: 10px 20px;
+  background-color: #553f9a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 5px;
+}
+
+.top-container button:hover {
+  background-color: #452f85;
+}

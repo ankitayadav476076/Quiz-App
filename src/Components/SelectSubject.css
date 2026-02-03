@@ -1,0 +1,43 @@
+.select-container {
+  max-width: 700px;
+  margin: 40px auto;
+  text-align: center;
+  color: white;
+}
+
+.select-container h1 {
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* nice heading effect */
+  background-color: rgba(0, 0, 255, 0.79);
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.subject-card {
+  background-color: #00c8ff;
+  padding: 80px 0;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  transition: 0.3s;
+  min-width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.subject-card:hover {
+  background-color: #009ecb;
+}
+
+/* Selected box style */
+.subject-card.selected {
+  background-color: #ffb300; 
+}

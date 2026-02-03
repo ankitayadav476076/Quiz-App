@@ -1,99 +1,117 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { questions } from "../data";
 import "./Quiz.css";
-import { data } from "../../Assets/data";
 
-const Quiz = () => {
+const Quiz = ({ subject, goBack, goToFinal }) => {
+  const quizQuestions = questions[subject.trim().toLowerCase()];
+  const user = JSON.parse(localStorage.getItem("quizUser")) || { name: "Guest" };
 
-  let [index, setIndex] = useState(0);
-  let [question, setQuestion] = useState(data[index]);
-  let [lock, setLock] = useState(false);
-  let [score, setScore] = useState(0);
-  let[result,setResult]=useState(false);
+  const [current, setCurrent] = useState(0);
+  const [score, setScore] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const [time, setTime] = useState(15);
+  const [showResult, setShowResult] = useState(false); // show result after any quiz
 
-  let Option1 = useRef(null);
-  let Option2 = useRef(null);
-  let Option3 = useRef(null);
-  let Option4 = useRef(null);
-
-  let Option_array = [Option1, Option2, Option3, Option4];
-
-  const checkAns = (e, ans) => {
-    if (lock === false) {
-      if (question.ans === ans) {
-        e.target.classList.add("correct");
-        setScore(prev => prev + 1);   // FIXED
-        setLock(true);
-      } else {
-        e.target.classList.add("wrong");
-        setLock(true);
-        Option_array[question.ans - 1].current.classList.add("correct");
-      }
-    }
-  };
-
-  const next = () => {
-    if (lock === true) {
-    if(index===data.length-1){
-      setResult(true);
-      return 0;
-    }
-      // FIX: move to next question
-      if (index < data.length - 1) {
-        let newIndex = index + 1;
-        setIndex(newIndex);
-        setQuestion(data[newIndex]);
-      }
-
-      setLock(false);
-
-      // Reset options styling
-      Option_array.map((option) => {
-        option.current.classList.remove("wrong");
-        option.current.classList.remove("correct");
-        return null;
+  // Timer for each question
+  useEffect(() => {
+    if (showResult) return; // stop timer when showing result
+    const timer = setInterval(() => {
+      setTime((prev) => {
+        if (prev === 1) {
+          handleNext();
+          return 15;
+        }
+        return prev - 1;
       });
-    }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [current, showResult]);
+
+  if (!quizQuestions) return <h2>No questions found</h2>;
+
+  const handleOptionClick = (index) => {
+    if (selected !== null) return;
+    setSelected(index);
+    if (index === quizQuestions[current].answer) setScore((prev) => prev + 1);
   };
-   const reset =()=>
-   {
-    setIndex(0);
-    setQuestion(data[0]);
-    setScore(0);
-    setLock(false);
-    setResult(false);
-   }
+
+  const handleNext = () => {
+    setSelected(null);
+    setTime(15);
+    if (current + 1 < quizQuestions.length) setCurrent((prev) => prev + 1);
+    else finishQuiz();
+  };
+
+  const finishQuiz = () => {
+    const allScores = JSON.parse(localStorage.getItem("userScores")) || {};
+    allScores[user.name] = allScores[user.name] || { html: 0, css: 0, js: 0, react: 0 };
+    allScores[user.name][subject.trim().toLowerCase()] = score;
+    localStorage.setItem("userScores", JSON.stringify(allScores));
+
+    // Show result after any subject
+    setShowResult(true);
+  };
+
+  const allScores = JSON.parse(localStorage.getItem("userScores")) || {};
+  const userScore = allScores[user.name];
+
+  // Show score after quiz
+  if (showResult && userScore) {
+    return (
+      <div className="container">
+        <h1>🎉 {user.name}'s Result</h1>
+        
+        {/* Show only current subject */}
+        <p>{subject.toUpperCase()}: {userScore[subject.trim().toLowerCase()]} / {quizQuestions.length}</p>
+
+        {/* If React quiz, show all subjects and total */}
+        {subject.trim().toLowerCase() === "react" && (
+          <>
+            <p>HTML: {userScore.html} / 5</p>
+            <p>CSS: {userScore.css} / 5</p>
+            <p>JS: {userScore.js} / 5</p>
+            <p>React: {userScore.react} / 5</p>
+            <h2>Total: {userScore.html + userScore.css + userScore.js + userScore.react} / 20</h2>
+          </>
+        )}
+
+        <button onClick={subject.trim().toLowerCase() === "react" ? goToFinal : goBack}>
+          {subject.trim().toLowerCase() === "react" ? "Next → Top Players" : "Back → Subjects"}
+        </button>
+      </div>
+    );
+  }
+
+  // Quiz interface
   return (
     <div className="container">
-      <h1>Quiz App</h1>
-      <hr />
-    {result?<></>:<>   
-      <h2>{index + 1}. {question.question}</h2>
+      <h1>Hello {user.name}, {subject.toUpperCase()} Quiz</h1>
+      <p style={{ textAlign: "center", fontWeight: "bold" }}>⏱ Time Left: {time}s</p>
+      <h2>{quizQuestions[current].question}</h2>
 
       <ul>
-        <li ref={Option1} onClick={(e) => checkAns(e, 1)}>
-          {question.option1}
-        </li>
-
-        <li ref={Option2} onClick={(e) => checkAns(e, 2)}>
-          {question.option2}
-        </li>
-
-        <li ref={Option3} onClick={(e) => checkAns(e, 3)}>
-          {question.option3}
-        </li>
-
-        <li ref={Option4} onClick={(e) => checkAns(e, 4)}>
-          {question.option4}
-        </li>
+        {quizQuestions[current].options.map((opt, i) => {
+          let className = "";
+          if (selected !== null) {
+            if (i === quizQuestions[current].answer) className = "correct";
+            else if (i === selected) className = "wrong";
+          }
+          return (
+            <li key={i} className={className} onClick={() => handleOptionClick(i)}>
+              {opt}
+            </li>
+          );
+        })}
       </ul>
 
-      <button onClick={next}>Next</button>
+      {selected !== null && (
+        <button onClick={handleNext}>
+          {current + 1 < quizQuestions.length ? "Next" : "Finish"}
+        </button>
+      )}
 
-      <div className="index">{index + 1} of {data.length}</div> </>   }
-      {result?<>
-      <h2>You Scored {score} out of {data.length}</h2>
-        <button onClick={reset}> Reset</button>
-        </>:<></>}
+      <div className="index">Question {current + 1} of {quizQuestions.length}</div>
     </div>
   );
 };

@@ -1,0 +1,43 @@
+.forget-container {
+  width: 350px;
+  margin: 80px auto;
+  padding: 30px;
+  border: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+  background: transparent;
+}
+
+.forget-container h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.forget-container input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.forget-container button {
+  margin-top: 15px;
+  padding: 12px 0;
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+  background-color: #00c9a7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: white;
+  cursor: pointer;
+}

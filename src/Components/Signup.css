@@ -1,0 +1,77 @@
+/* Full page background */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #a18cd1, #fbc2eb); /* purple gradient */
+}
+
+/* Center login/signup container */
+.login-container, .signup-container {
+  width: 350px;
+  max-width: 90%;
+  background: #fff;
+  padding: 20px 22px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  margin: 60px auto;
+}
+
+/* Heading */
+.login-container h1, .signup-container h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.login-container input, .signup-container input {
+  width: 90%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.login-container input:focus, .signup-container input:focus {
+  border-color: #553f9a;
+  box-shadow: 0 0 5px rgba(85, 63, 154, 0.5);
+}
+
+/* Buttons */
+.login-container button, .signup-container button {
+  width: 95%;
+  padding: 10px;
+  margin-top: 12px;
+  background: #553f9a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-container button:hover, .signup-container button:hover {
+  background: #452f85;
+  transform: scale(1.03);
+}
+
+/* Links for Sign Up / Forgot Password */
+.login-container p, .signup-container p {
+  margin-top: 10px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-container p:hover, .signup-container p:hover {
+  color: #553f9a;
+}
