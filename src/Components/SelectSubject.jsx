@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SelectSubject.css";
 
-const SelectSubject = ({ startQuiz }) => {
+const SelectSubject = ({ startQuiz, goToProfile }) => {
   const subjects = ["HTML", "CSS", "JS", "React"];
 
   const [selected, setSelected] = useState(""); // track selected subject
@@ -26,6 +26,14 @@ const SelectSubject = ({ startQuiz }) => {
           </div>
         ))}
       </div>
+
+      {/* ✅ Profile Button at the bottom */}
+      <button 
+        className="profile-btn" 
+        onClick={goToProfile}
+      >
+        👤 View Profile
+      </button>
     </div>
   );
 };

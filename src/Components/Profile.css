@@ -1,0 +1,84 @@
+.profile-container {
+  width: 350px;
+  max-width: 90%;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  font-size: 50px;
+  margin: 0 auto 15px auto;
+  background-color: rgba(128, 128, 128, 0.45);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+.profile-container h1 {
+  margin-bottom: 12px;
+  font-size: 22px;
+  color: #333;
+}
+
+.profile-container h2,
+.profile-container h3 {
+  margin: 4px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.score-box {
+  margin: 15px 0;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.score-box p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+/* Unified small buttons */
+.profile-container button {
+  padding: 6px 15px; /* smaller */
+  font-size: 14px;
+  min-width: 100px; /* same width */
+  margin: 5px 5px 0 0; /* small spacing */
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.profile-container button:hover {
+  opacity: 0.9;
+}
+
+.logout-btn {
+  background-color: #ff3b3b;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background-color: #e02b2b;
+}
+
+.profile-container button:not(.logout-btn) {
+  background-color: #553f9a;
+  color: #fff;
+}
+
+.profile-container button:not(.logout-btn):hover {
+  background-color: #452f85;
+}

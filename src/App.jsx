@@ -5,12 +5,13 @@ import Forget from "./Components/Forget";
 import Quiz from "./Components/Quiz";
 import SelectSubject from "./Components/SelectSubject";
 import TopPlayers from "./Components/TopPlayers";
+import Profile from "./Components/Profile";
 
 function App() {
   const [page, setPage] = useState("login");
   const [subject, setSubject] = useState("");
 
-  // Login success → select subject
+  // Login success → go to select subject
   const handleLoginSuccess = () => setPage("select");
 
   // Start quiz
@@ -22,8 +23,11 @@ function App() {
   // Back to subject select
   const goBackToSubjects = () => setPage("select");
 
-  // After React quiz → show top players
+  // After React quiz → go to TopPlayers
   const goToTopPlayers = () => setPage("topplayers");
+
+  // Go to user profile
+  const goToProfile = () => setPage("profile");
 
   // Logout → go to login
   const goToLogin = () => {
@@ -45,18 +49,27 @@ function App() {
 
       {page === "forget" && <Forget goToLogin={goToLogin} />}
 
-      {page === "select" && <SelectSubject startQuiz={startQuiz} />}
+      {page === "select" && (
+        <SelectSubject
+          startQuiz={startQuiz}
+          goToProfile={goToProfile} // optional button in SelectSubject to view profile
+        />
+      )}
 
       {page === "quiz" && (
         <Quiz
           subject={subject}
           goBack={goBackToSubjects}
-          goToFinal={goToTopPlayers} // THIS IS IMPORTANT
+          goToFinal={goToTopPlayers} // called after React quiz
         />
       )}
 
       {page === "topplayers" && (
         <TopPlayers goBack={goBackToSubjects} />
+      )}
+
+      {page === "profile" && (
+        <Profile goBack={goBackToSubjects} />
       )}
     </>
   );

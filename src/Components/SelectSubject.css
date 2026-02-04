@@ -41,3 +41,21 @@
 .subject-card.selected {
   background-color: #ffb300; 
 }
+
+/* Profile Button Styling */
+.profile-btn {
+  margin-top: 30px; /* spacing from subject cards */
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #553f9a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile-btn:hover {
+  background-color: #452f85;
+}

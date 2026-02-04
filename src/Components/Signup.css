@@ -1,77 +1,120 @@
-/* Full page background */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, #a18cd1, #fbc2eb); /* purple gradient */
+.signup-bg {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, #a18cd1, #fbc2eb);
 }
 
-/* Center login/signup container */
-.login-container, .signup-container {
+.signup-container {
   width: 350px;
-  max-width: 90%;
-  background: #fff;
-  padding: 20px 22px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  margin: 60px auto;
+  max-height: 500px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  overflow-y: auto;
 }
 
-/* Heading */
-.login-container h1, .signup-container h1 {
-  font-size: 22px;
-  font-weight: 600;
-  color: #333;
+.form-heading {
+  font-size: 36px;
   margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
 }
 
-/* Input fields */
-.login-container input, .signup-container input {
-  width: 90%;
-  padding: 10px 12px;
-  margin: 8px 0;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1.5px solid #ccc;
-  outline: none;
-  transition: all 0.2s ease;
+.input-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
-.login-container input:focus, .signup-container input:focus {
-  border-color: #553f9a;
-  box-shadow: 0 0 5px rgba(85, 63, 154, 0.5);
-}
-
-/* Buttons */
-.login-container button, .signup-container button {
-  width: 95%;
-  padding: 10px;
-  margin-top: 12px;
-  background: #553f9a;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
+.input-box input {
+  width: 100%;
+  height: 45px;
+  padding: 10px 45px 10px 40px;
+  border-radius: 6px;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  outline: none;
+  font-size: 15px;
+  background-color: rgba(255,255,255,0.9);
+  color: #000;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 20px;
 }
 
-.login-container button:hover, .signup-container button:hover {
-  background: #452f85;
+.input-box input[type="text"] {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1077/1077114.png');
+}
+
+.input-box input[type="email"] {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/561/561127.png');
+}
+
+.input-box input[type="password"],
+.password-visible {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/3064/3064197.png');
+}
+
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+  background-color: rgba(255,255,255,0.9);
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.signup-btn:hover {
   transform: scale(1.03);
 }
 
-/* Links for Sign Up / Forgot Password */
-.login-container p, .signup-container p {
-  margin-top: 10px;
-  color: #333;
+.btn-icon {
+  font-size: 16px;
+}
+
+.login-text {
+  margin-top: 12px;
   font-size: 14px;
+}
+
+.login-link {
+  color: #36d1dc;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.login-container p:hover, .signup-container p:hover {
-  color: #553f9a;
+.login-link:hover {
+  color: #5b86e5;
 }
