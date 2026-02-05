@@ -51,11 +51,12 @@ const TopPlayers = ({ goBack }) => {
           </div>
         ))}
       </div>
-
-      <button onClick={goBack}>Back</button>
+<div className="btn-container">
+      <button onClick={goBack} className="reset-btn">Back</button>
       <button onClick={resetGame} className="reset-btn">
         Reset Leaderboard
       </button>
+      </div>
     </div>
   );
 };

@@ -31,7 +31,7 @@ const Profile = ({ goBack }) => {
         <h2>Total Score: {total} / 20</h2>
       </div>
 
-      <button onClick={goBack}>Back</button>
+      <button onClick={goBack} className="logout-btn">Back</button>
       <button onClick={logout} className="logout-btn">Logout</button>
     </div>
   );

@@ -38,28 +38,30 @@ const Login = ({ onLogin, goToSignUp, goToForget }) => {
 
   return (
     <div className="login-bg">
-      <div className="login-container">
-        <h1 className="form-heading">Login</h1>
+      <div className="welcome-text">
+        <h1>Welcome Back</h1>
+        <p>Sign in to your account</p>
+      </div>
 
+      <div className="login-container">
         <form onSubmit={handleLogin}>
-          {/* Email */}
+          <label className="input-label">Email Address:-</label>
           <div className="input-box">
             <FiMail className="left-react-icon" />
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          {/* Password */}
+          <label className="input-label">Password:-</label>
           <div className="input-box password-box">
             <FiLock className="left-react-icon" />
-
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -81,7 +83,7 @@ const Login = ({ onLogin, goToSignUp, goToForget }) => {
         </form>
 
         <div className="links">
-          <span onClick={goToForget}>Forgot Password?</span>
+          <span className="signup-forget" onClick={goToForget}>Forgot Password?</span>
           <span className="signup-link" onClick={goToSignUp}>
             Sign Up
           </span>

@@ -51,10 +51,10 @@
 
 /* Unified small buttons */
 .profile-container button {
-  padding: 6px 15px; /* smaller */
+  padding: 6px 15px;
   font-size: 14px;
-  min-width: 100px; /* same width */
-  margin: 5px 5px 0 0; /* small spacing */
+  min-width: 100px;
+  margin: 5px 5px 0 0;   /* keep as it is */
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -65,6 +65,7 @@
   opacity: 0.9;
 }
 
+/* Logout button style */
 .logout-btn {
   background-color: #ff3b3b;
   color: #fff;
@@ -74,6 +75,7 @@
   background-color: #e02b2b;
 }
 
+/* Other buttons */
 .profile-container button:not(.logout-btn) {
   background-color: #553f9a;
   color: #fff;
@@ -81,4 +83,11 @@
 
 .profile-container button:not(.logout-btn):hover {
   background-color: #452f85;
+}
+
+/* ✅ ONLY center Back and Logout buttons */
+.logout-btn,
+.back-btn {
+  display: block;
+  margin: 15px auto !important;
 }

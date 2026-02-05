@@ -72,26 +72,19 @@
 
 /* Next / Finish Button */
 .container button {
-  width: 180px;        /* increased width */
-  height: 48px;       /* increased height */
+  width: 180px;
+  height: 48px;
   background: #553f9a;
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 16px;    /* bigger text */
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  margin: 12px 20px;  /* correct margin */
-  transition: all 0.2s ease;
 }
 
 
-.container button:hover {
-  background: #452f85;
-  transform: scale(1.05);
-}
-
-/* Question index */
+ 
 .index {
   margin-top: 12px;
   font-size: 12px;
