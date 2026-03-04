@@ -76,6 +76,7 @@ border-radius: 6px;
 border: none;
 outline: none;
 box-sizing: border-box;
+background-color: white; 
 }
 
 /* Eye icon */
