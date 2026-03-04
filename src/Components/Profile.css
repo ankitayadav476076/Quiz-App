@@ -1,3 +1,10 @@
+/* Prevent layout breaking */
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .profile-container {
   width: 350px;
   max-width: 90%;
@@ -9,6 +16,7 @@
   text-align: center;
 }
 
+/* Avatar */
 .profile-avatar {
   width: 80px;
   height: 80px;
@@ -23,6 +31,7 @@
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
 
+/* Headings */
 .profile-container h1 {
   margin-bottom: 12px;
   font-size: 22px;
@@ -36,6 +45,7 @@
   color: #555;
 }
 
+/* Score box */
 .score-box {
   margin: 15px 0;
   padding: 12px;
@@ -49,12 +59,12 @@
   font-size: 14px;
 }
 
-/* Unified small buttons */
+/* Buttons */
 .profile-container button {
   padding: 6px 15px;
   font-size: 14px;
   min-width: 100px;
-  margin: 5px 5px 0 0;   /* keep as it is */
+  margin: 5px 5px 0 0;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -65,7 +75,7 @@
   opacity: 0.9;
 }
 
-/* Logout button style */
+/* Logout button */
 .logout-btn {
   background-color: #ff3b3b;
   color: #fff;
@@ -85,9 +95,58 @@
   background-color: #452f85;
 }
 
-/* ✅ ONLY center Back and Logout buttons */
+/* Center buttons */
 .logout-btn,
 .back-btn {
   display: block;
   margin: 15px auto !important;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 480px){
+
+  .profile-container{
+    padding: 18px 15px;
+  }
+
+  .profile-avatar{
+    width: 65px;
+    height: 65px;
+    font-size: 40px;
+  }
+
+  .profile-container h1{
+    font-size: 20px;
+  }
+
+  .profile-container h2,
+  .profile-container h3{
+    font-size: 14px;
+  }
+
+  .score-box{
+    padding: 10px;
+  }
+
+  .profile-container button{
+    width: 100%;
+    margin: 8px auto;
+    display: block;
+  }
+}
+
+
+/* TABLET RESPONSIVE */
+
+@media (max-width: 768px){
+
+  .profile-container{
+    width: 95%;
+  }
+
+  .profile-container h1{
+    font-size: 21px;
+  }
 }

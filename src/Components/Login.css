@@ -1,114 +1,177 @@
 .login-bg {
-  height: 450px;
-  width:350px;
-  margin: 20px;
-  border: 2px solid white;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: "Poppins", sans-serif;
-  color: white;
+
+height: 450px;
+width:350px;
+margin: 20px;
+
+border: 2px solid white;
+border-radius: 20px;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+font-family: "Poppins", sans-serif;
+color: white;
+
+/* FIX FOR RESPONSIVENESS */
+box-sizing: border-box;
+max-width: 100%;
+
 }
 
 .welcome-text {
-  text-align: center;
-  margin-bottom: 25px;
+text-align: center;
+margin-bottom: 25px;
 }
+
 .welcome-text h1{
-  font-size: 42px;
+font-size: 42px;
 }
+
 .welcome-text p{
-  color: black;
-  font-weight: bold;
+color: black;
+font-weight: bold;
 }
 
 .login-container {
-  width: 300px;
+width: 300px;
+max-width: 100%;
 }
 
 /* Center labels */
 .input-label {
-  display: block;
-  text-align: center;
-  margin-bottom: 6px;
-  font-size: 14px;
-  font-weight: bold;
+display: block;
+text-align: center;
+margin-bottom: 6px;
+font-size: 14px;
+font-weight: bold;
 }
 
 /* Center input box */
 .input-box {
-  position: relative;
-  width: 85%;
-  margin: 0 auto 15px;
+position: relative;
+width: 85%;
+margin: 0 auto 15px;
 }
 
-/* Left icon exactly at input corner */
+/* Left icon */
 .left-react-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #333;
+position: absolute;
+left: 12px;
+top: 50%;
+transform: translateY(-50%);
+font-size: 18px;
+color: #333;
 }
 
 /* Input */
 .input-box input {
-  width: 100%;
-  height: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
+width: 100%;
+height: 40px;
+padding-left: 40px;
+padding-right: 40px;
+border-radius: 6px;
+border: none;
+outline: none;
+box-sizing: border-box;
 }
 
 /* Eye icon */
 .eye-icon {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 18px;
-  color: #333;
+position: absolute;
+right: 12px;
+top: 50%;
+transform: translateY(-50%);
+cursor: pointer;
+font-size: 18px;
+color: #333;
 }
 
 /* Button centered */
 button {
-  width: 85%;
-  margin: 10px auto 0;
-  display: block;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(to right, #36d1dc, #5b86e5);
-  font-weight: bold;
-  cursor: pointer;
+width: 85%;
+margin: 10px auto 0;
+display: block;
+padding: 10px;
+border-radius: 8px;
+border: none;
+background: linear-gradient(to right, #36d1dc, #5b86e5);
+font-weight: bold;
+cursor: pointer;
 }
 
 /* Links */
 .links {
-  width: 85%;
-  margin: 12px auto 0;
-  display: flex;
-  justify-content: space-between;
+width: 85%;
+margin: 12px auto 0;
+display: flex;
+justify-content: space-between;
+}
+
+.signup-link{
+background-color:rgba(135, 207, 235, 0.461);
+padding: 5px;
+border: 1px solid black;
+border-radius: 6px;
+cursor: pointer;
+text-decoration: underline;
+margin-top:18px ;
+}
+
+.signup-forget{
+text-decoration: underline;
+cursor: pointer;
+margin-top: 20px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 480px){
+
+.login-bg{
+height: auto;
+padding: 25px 15px;
+width: 95%;
+margin: 20px auto;
+}
+
+.welcome-text h1{
+font-size: 30px;
+}
+
+.welcome-text p{
+font-size: 14px;
+}
+
+.input-box{
+width: 100%;
+}
+
+button{
+width: 100%;
+}
+
+.links{
+flex-direction: column;
+align-items: center;
+gap: 8px;
+}
 
 }
-.signup-link{
-  background-color:rgba(135, 207, 235, 0.461);
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-top:18px ;
+
+/* TABLET RESPONSIVE */
+
+@media (max-width: 768px){
+
+.login-bg{
+width: 95%;
+margin: 20px auto;
 }
-.signup-forget{
-  text-decoration: underline;
-  cursor: pointer;
-  margin-top: 20px;
+
+.welcome-text h1{
+font-size: 36px;
+}
 
 }

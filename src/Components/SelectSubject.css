@@ -1,5 +1,13 @@
+/* Prevent layout breaking */
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .select-container {
   max-width: 700px;
+  width: 90%;
   margin: 40px auto;
   text-align: center;
   color: white;
@@ -10,16 +18,20 @@
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 1px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* nice heading effect */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   background-color: rgba(0, 0, 255, 0.79);
+  padding: 10px;
+  border-radius: 8px;
 }
 
+/* Subjects Grid */
 .subjects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
+/* Subject Card */
 .subject-card {
   background-color: #00c8ff;
   padding: 80px 0;
@@ -37,14 +49,14 @@
   background-color: #009ecb;
 }
 
-/* Selected box style */
+/* Selected */
 .subject-card.selected {
-  background-color: #ffb300; 
+  background-color: #ffb300;
 }
 
-/* Profile Button Styling */
+/* Profile Button */
 .profile-btn {
-  margin-top: 30px; /* spacing from subject cards */
+  margin-top: 30px;
   padding: 12px 25px;
   font-size: 18px;
   font-weight: bold;
@@ -58,4 +70,50 @@
 
 .profile-btn:hover {
   background-color: #452f85;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 480px){
+
+  .select-container h1{
+    font-size: 24px;
+  }
+
+  /* 1 column grid */
+  .subjects-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .subject-card{
+    padding: 50px 0;
+    font-size: 18px;
+    min-width: unset;
+  }
+
+  .profile-btn{
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+
+/* TABLET RESPONSIVE */
+
+@media (max-width: 768px){
+
+  .select-container{
+    width: 95%;
+  }
+
+  .subjects-grid{
+    gap: 20px;
+  }
+
+  .subject-card{
+    padding: 60px 0;
+    font-size: 20px;
+  }
 }
