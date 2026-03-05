@@ -1,9 +1,13 @@
 /* Prevent layout issues */
+
+
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 
 /* Background */
 .signup-bg {
@@ -34,6 +38,7 @@
   border: 2px solid white;
   overflow-y: auto;
 }
+
 
 /* Heading */
 .form-heading {
@@ -145,8 +150,8 @@
 
   .signup-bg{
 
-    align-items: flex-start;
-    padding-top: 35px;
+    align-items: center;
+    padding-top: 0;
 
   }
 
