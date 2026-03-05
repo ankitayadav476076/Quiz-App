@@ -6,8 +6,8 @@
 
 /* Full screen background */
 body {
-  min-height: 100vh;   /* fallback */
-  min-height: 100dvh;  /* mobile fix */
+  min-height: 100vh;   
+  min-height: 100dvh;  
 
   background-image: linear-gradient(#D8C7FF, #19006C);
   display: flex;
