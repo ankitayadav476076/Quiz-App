@@ -144,8 +144,10 @@
 @media (max-width: 480px){
 
   .signup-bg{
+
     align-items: flex-start;
-    padding-top: 30px;
+    padding-top: 35px;
+
   }
 
   .signup-container{
