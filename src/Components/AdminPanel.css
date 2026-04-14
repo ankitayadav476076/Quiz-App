@@ -1,3 +1,4 @@
+/* ===== CONTAINER ===== */
 .admin-container {
   min-height: 100vh;
   display: flex;
@@ -7,12 +8,15 @@
   padding: 20px;
 }
 
-/* Card */
+/* ===== CARD ===== */
 .admin-card {
   background: rgba(255, 255, 255, 0.95);
   padding: 30px;
   border-radius: 20px;
-  width: 450px;
+
+  width: 100%;
+  max-width: 450px;   /* 🔥 responsive fix */
+
   max-height: 90vh;
   overflow-y: auto;
 
@@ -31,7 +35,7 @@
   margin-bottom: 20px;
 }
 
-/* Inputs + Select */
+/* ===== INPUTS ===== */
 .admin-card input,
 .admin-card select {
   width: 100%;
@@ -50,7 +54,7 @@
   box-shadow: 0 0 6px rgba(142, 45, 226, 0.3);
 }
 
-/* Add Button */
+/* ===== BUTTON ===== */
 .admin-card button {
   width: 100%;
   padding: 12px;
@@ -70,72 +74,7 @@
   box-shadow: 0 10px 20px rgba(142, 45, 226, 0.3);
 }
 
-/* Question List */
-.question-list {
-  margin-top: 25px;
-}
-
-/* Question Card */
-.question-item {
-  background: #f8f5ff;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  border-left: 5px solid #8e2de2;
-  transition: 0.3s;
-}
-
-.question-item:hover {
-  transform: scale(1.02);
-}
-
-/* Subject Badge */
-.question-item p:first-child {
-  font-size: 12px;
-  font-weight: bold;
-  color: #8e2de2;
-  margin-bottom: 5px;
-}
-
-/* Question Text */
-.question-item p strong {
-  color: #333;
-}
-
-/* Options list */
-.question-item ul {
-  padding-left: 18px;
-  margin-top: 8px;
-}
-
-.question-item li {
-  font-size: 13px;
-  margin-bottom: 3px;
-}
-
-/* Correct Answer highlight */
-.question-item li:has(✅) {
-  color: green;
-  font-weight: bold;
-}
-
-/* Delete Button */
-.question-item button {
-  margin-top: 10px;
-  padding: 6px 10px;
-  font-size: 12px;
-  border-radius: 6px;
-  border: none;
-  background: #ff4d4d;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.question-item button:hover {
-  background: #e60000;
-}
-
+/* ===== TOGGLE BUTTONS ===== */
 .toggle-btns {
   display: flex;
   gap: 10px;
@@ -155,4 +94,141 @@
 .toggle-btns .active {
   background: linear-gradient(135deg, #8e2de2, #6a11cb);
   color: white;
+}
+
+/* ===== QUESTION LIST ===== */
+.question-list {
+  margin-top: 25px;
+}
+
+/* ===== QUESTION CARD ===== */
+.question-item {
+  background: #f8f5ff;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border-left: 5px solid #8e2de2;
+  transition: 0.3s;
+}
+
+.question-item:hover {
+  transform: scale(1.02);
+}
+
+/* SUBJECT */
+.question-item p:first-child {
+  font-size: 12px;
+  font-weight: bold;
+  color: #8e2de2;
+  margin-bottom: 5px;
+}
+
+/* QUESTION */
+.question-item p strong {
+  color: #333;
+}
+
+/* ===== OPTIONS ===== */
+.question-item ul {
+  list-style: none;        /* 🔥 remove bullets */
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+.question-item li {
+  background: #eee;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* CORRECT ANSWER */
+.question-item li:has(✅) {
+  background: #d4edda;
+  color: #155724;
+  font-weight: bold;
+}
+
+/* DELETE BUTTON */
+.question-item button {
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  background: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.question-item button:hover {
+  background: #e60000;
+}
+
+/* ========================= */
+/* 📱 MOBILE RESPONSIVE */
+/* ========================= */
+@media (max-width: 600px) {
+
+  .admin-card {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .admin-card h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .admin-card input,
+  .admin-card select {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .admin-card button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .question-item {
+    padding: 12px;
+  }
+
+  .question-item li {
+    font-size: 12px;
+  }
+
+  .toggle-btns {
+    flex-direction: column;
+  }
+}
+
+/* ========================= */
+/* 📱 TABLET */
+/* ========================= */
+@media (min-width: 601px) and (max-width: 900px) {
+
+  .admin-card {
+    max-width: 90%;
+  }
+
+}
+
+/* ========================= */
+/* 💻 LARGE SCREEN */
+/* ========================= */
+@media (min-width: 1200px) {
+
+  .admin-card {
+    max-width: 500px;
+  }
+
 }
