@@ -6,30 +6,39 @@ import Quiz from "./Components/Quiz";
 import SelectSubject from "./Components/SelectSubject";
 import TopPlayers from "./Components/TopPlayers";
 import Profile from "./Components/Profile";
+import AdminPanel from "./Components/AdminPanel";
 
 function App() {
   const [page, setPage] = useState("login");
   const [subject, setSubject] = useState("");
 
-  // Login success → go to select subject
-  const handleLoginSuccess = () => setPage("select");
+  
+ const handleLoginSuccess = (role) => {
+  if (role === "admin") {
+    setPage("admin");   // go to admin panel
+  } else {
+    setPage("select");  // normal user
+  }
+};
 
-  // Start quiz
+  
   const startQuiz = (sub) => {
     setSubject(sub);
     setPage("quiz");
   };
 
-  // Back to subject select
+  
   const goBackToSubjects = () => setPage("select");
 
-  // After React quiz → go to TopPlayers
+ 
+
+  
   const goToTopPlayers = () => setPage("topplayers");
 
-  // Go to user profile
+  
   const goToProfile = () => setPage("profile");
 
-  // Logout → go to login
+  
   const goToLogin = () => {
     localStorage.removeItem("quizUser");
     setPage("login");
@@ -52,7 +61,7 @@ function App() {
       {page === "select" && (
         <SelectSubject
           startQuiz={startQuiz}
-          goToProfile={goToProfile} // optional button in SelectSubject to view profile
+          goToProfile={goToProfile}
         />
       )}
 
@@ -60,7 +69,7 @@ function App() {
         <Quiz
           subject={subject}
           goBack={goBackToSubjects}
-          goToFinal={goToTopPlayers} // called after React quiz
+          goToFinal={goToTopPlayers} 
         />
       )}
 
@@ -71,6 +80,7 @@ function App() {
       {page === "profile" && (
         <Profile goBack={goBackToSubjects} />
       )}
+       {page === "admin" && <AdminPanel />}
     </>
   );
 }

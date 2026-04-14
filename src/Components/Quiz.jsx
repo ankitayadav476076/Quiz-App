@@ -3,18 +3,32 @@ import { questions } from "../data";
 import "./Quiz.css";
 
 const Quiz = ({ subject, goBack, goToFinal }) => {
-  const quizQuestions = questions[subject.trim().toLowerCase()];
+
+  const subjectKey = subject.trim().toLowerCase();
+
+  // ✅ OLD QUESTIONS
+  const oldQuestions = questions[subjectKey] || [];
+
+  // ✅ NEW ADMIN QUESTIONS
+  const newQuestions = JSON.parse(localStorage.getItem("quizData")) || [];
+
+  const filteredNew = newQuestions.filter(
+    (q) => q.subject === subjectKey
+  );
+
+  // ✅ MERGE BOTH
+  const quizQuestions = [...oldQuestions, ...filteredNew];
+
   const user = JSON.parse(localStorage.getItem("quizUser")) || { name: "Guest" };
 
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState(null);
   const [time, setTime] = useState(15);
-  const [showResult, setShowResult] = useState(false); // show result after any quiz
+  const [showResult, setShowResult] = useState(false);
 
-  // Timer for each question
   useEffect(() => {
-    if (showResult) return; // stop timer when showing result
+    if (showResult) return;
     const timer = setInterval(() => {
       setTime((prev) => {
         if (prev === 1) {
@@ -28,12 +42,29 @@ const Quiz = ({ subject, goBack, goToFinal }) => {
     return () => clearInterval(timer);
   }, [current, showResult]);
 
-  if (!quizQuestions) return <h2>No questions found</h2>;
+  if (!quizQuestions || quizQuestions.length === 0)
+    return <h2>No questions found</h2>;
 
+  // ✅ UPDATED ANSWER LOGIC (supports both old + new)
   const handleOptionClick = (index) => {
     if (selected !== null) return;
+
     setSelected(index);
-    if (index === quizQuestions[current].answer) setScore((prev) => prev + 1);
+
+    const currentQ = quizQuestions[current];
+
+    // old question
+    if (currentQ.answer !== undefined) {
+      if (index === currentQ.answer) {
+        setScore((prev) => prev + 1);
+      }
+    }
+    // new admin question
+    else {
+      if (currentQ.options[index] === currentQ.correct) {
+        setScore((prev) => prev + 1);
+      }
+    }
   };
 
   const handleNext = () => {
@@ -45,60 +76,95 @@ const Quiz = ({ subject, goBack, goToFinal }) => {
 
   const finishQuiz = () => {
     const allScores = JSON.parse(localStorage.getItem("userScores")) || {};
-    allScores[user.name] = allScores[user.name] || { html: 0, css: 0, js: 0, react: 0 };
-    allScores[user.name][subject.trim().toLowerCase()] = score;
-    localStorage.setItem("userScores", JSON.stringify(allScores));
+    allScores[user.name] = allScores[user.name] || {
+      html: 0,
+      css: 0,
+      js: 0,
+      react: 0,
+    };
 
-    // Show result after any subject
+    allScores[user.name][subjectKey] = score;
+
+    localStorage.setItem("userScores", JSON.stringify(allScores));
     setShowResult(true);
   };
 
   const allScores = JSON.parse(localStorage.getItem("userScores")) || {};
   const userScore = allScores[user.name];
 
-  // Show score after quiz
   if (showResult && userScore) {
     return (
       <div className="container">
         <h1>🎉 {user.name}'s Result</h1>
-        
-        {/* Show only current subject */}
-        <p>{subject.toUpperCase()}: {userScore[subject.trim().toLowerCase()]} / {quizQuestions.length}</p>
 
-        {/* If React quiz, show all subjects and total */}
-        {subject.trim().toLowerCase() === "react" && (
+        <p>
+          {subject.toUpperCase()}: {userScore[subjectKey]} /{" "}
+          {quizQuestions.length}
+        </p>
+
+        {subjectKey === "react" && (
           <>
             <p>HTML: {userScore.html} / 5</p>
             <p>CSS: {userScore.css} / 5</p>
             <p>JS: {userScore.js} / 5</p>
             <p>React: {userScore.react} / 5</p>
-            <h2>Total: {userScore.html + userScore.css + userScore.js + userScore.react} / 20</h2>
+            <h2>
+              Total:{" "}
+              {userScore.html +
+                userScore.css +
+                userScore.js +
+                userScore.react}{" "}
+              / 20
+            </h2>
           </>
         )}
 
-        <button onClick={subject.trim().toLowerCase() === "react" ? goToFinal : goBack}>
-          {subject.trim().toLowerCase() === "react" ? "Next → Top Players" : "Back → Subjects"}
+        <button onClick={subjectKey === "react" ? goToFinal : goBack}>
+          {subjectKey === "react"
+            ? "Next → Top Players"
+            : "Back → Subjects"}
         </button>
       </div>
     );
   }
 
-  // Quiz interface
   return (
     <div className="container">
-      <h1>Hello {user.name}, {subject.toUpperCase()} Quiz</h1>
-      <p style={{ textAlign: "center", fontWeight: "bold" }}>⏱ Time Left: {time}s</p>
+      <h1>
+        Hello {user.name}, {subject.toUpperCase()} Quiz
+      </h1>
+
+      <p style={{ textAlign: "center", fontWeight: "bold" }}>
+        ⏱ Time Left: {time}s
+      </p>
+
       <h2>{quizQuestions[current].question}</h2>
 
       <ul>
         {quizQuestions[current].options.map((opt, i) => {
           let className = "";
+
           if (selected !== null) {
-            if (i === quizQuestions[current].answer) className = "correct";
-            else if (i === selected) className = "wrong";
+            const currentQ = quizQuestions[current];
+
+            // old question
+            if (currentQ.answer !== undefined) {
+              if (i === currentQ.answer) className = "correct";
+              else if (i === selected) className = "wrong";
+            }
+            // new question
+            else {
+              if (opt === currentQ.correct) className = "correct";
+              else if (i === selected) className = "wrong";
+            }
           }
+
           return (
-            <li key={i} className={className} onClick={() => handleOptionClick(i)}>
+            <li
+              key={i}
+              className={className}
+              onClick={() => handleOptionClick(i)}
+            >
               {opt}
             </li>
           );
@@ -111,7 +177,9 @@ const Quiz = ({ subject, goBack, goToFinal }) => {
         </button>
       )}
 
-      <div className="index">Question {current + 1} of {quizQuestions.length}</div>
+      <div className="index">
+        Question {current + 1} of {quizQuestions.length}
+      </div>
     </div>
   );
 };

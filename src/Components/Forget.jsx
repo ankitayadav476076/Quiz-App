@@ -7,7 +7,7 @@ const Forget = ({ goToLogin }) => {
   const handleReset = (e) => {
     e.preventDefault();
 
-    // 🔹 Validation
+    
     if (email.trim() === "") {
       alert("Please enter your email");
       return;
@@ -21,7 +21,7 @@ const Forget = ({ goToLogin }) => {
 
     alert(`If ${email} exists, instructions sent to your email.`);
 
-    // 🔹 Safe call (prevents error if prop name mismatch)
+    
     if (goToLogin) {
       goToLogin();
     }

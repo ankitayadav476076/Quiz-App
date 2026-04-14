@@ -14,6 +14,15 @@ const Login = ({ onLogin, goToSignUp, goToForget }) => {
       alert("Please fill all fields");
       return;
     }
+if (email === "admin@gmail.com" && password === "admin123") {
+    localStorage.setItem(
+      "quizUser",
+      JSON.stringify({ name: "Admin", email, role: "admin" })
+    );
+
+    onLogin("admin");
+    return;
+  }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -52,6 +61,7 @@ const Login = ({ onLogin, goToSignUp, goToForget }) => {
               type="email"
               placeholder="Enter your email"
               value={email}
+               autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -63,6 +73,7 @@ const Login = ({ onLogin, goToSignUp, goToForget }) => {
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
               value={password}
+               autoComplete="off"
               onChange={(e) => setPassword(e.target.value)}
             />
 

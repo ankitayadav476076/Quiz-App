@@ -64,6 +64,8 @@ top: 50%;
 transform: translateY(-50%);
 font-size: 18px;
 color: #333;
+pointer-events: none;  
+stroke-width: 1.5;   /* FIXED */
 }
 
 /* Input */
